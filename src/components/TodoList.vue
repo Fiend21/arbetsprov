@@ -20,7 +20,7 @@
                     max-width="500px">
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn
-                            color="primary"
+                            color="Black"
                             dark
                             class="mb-2"
                             v-bind="attrs"
@@ -31,21 +31,6 @@
                         <v-card-title>
                             <span class="text-h5">{{ formTitle }}</span>
                         </v-card-title>
-                        <v-card-text>
-                            <v-container>
-                                <v-row>
-                                    <v-col
-                                        cols="12"
-                                        sm="6"
-                                        md="4"
-                                        ><v-text-field
-                                            v-model="editedTodo.description"
-                                            label="Description"
-                                        ></v-text-field>
-                                    </v-col>
-                                </v-row>
-                            </v-container>
-                        </v-card-text>
                      </v-card>
                 </v-dialog>              
             </v-toolbar>
@@ -67,13 +52,15 @@
 </template>
 
 <script>
-let id = 0
 
 export default {
     name: 'TodoList',
 
     data: () => ({
-         
+
+            dialog: false,
+            dialogDelete: false,
+
             headers: [
                 { text: 'Description',
                     sortable: true,
@@ -111,9 +98,48 @@ export default {
                     value: 'actions',
                 }
             ],
-            todos: [
-                {  
-                    id: id++,
+            todos: [],
+            editedIndex: -1,
+
+            editedTodo: {
+                    created: '', 
+                    description: '', 
+                    deadline: '', 
+                    priority: '', 
+                    completed: false 
+            },
+
+            defaultTodo: {
+                    created: '', 
+                    description: '', 
+                    deadline: '', 
+                    priority: '', 
+                    completed: false 
+            },
+        }),
+
+    computed: {
+      formTitle () {
+        return this.id === -1 ? 'New Todo' : 'Edit Todo'
+      },
+    },
+
+     watch: {
+      dialog (val) {
+        val || this.close()
+      },
+      dialogDelete (val) {
+        val || this.closeDelete()
+      },
+    },
+
+        created() {
+            this.initialize()
+        },
+
+         methods: {
+            initialize() {
+                this.todos = [ {  
                     created: '2022-06-23',
                     description: 'Learn Vue.', 
                     deadline: '2022-06-29',
@@ -122,8 +148,7 @@ export default {
                     false 
                 },
 
-                {   
-                    id: id++, 
+                {    
                     created: '2022-06-27', 
                     description: 'Learn Vuetify.', 
                     deadline: '2022-06-29', 
@@ -132,7 +157,6 @@ export default {
                 },
 
                 {  
-                    id: id++, 
                     created: '2022-06-27', 
                     description: 'Refactor .Net-app to use dedicated validation-class.', 
                     deadline: '2022-08-07', 
@@ -141,15 +165,47 @@ export default {
                 },
 
                 {  
-                    id: id++, 
                     created: '2022-06-28', 
                     description: 'Learn Play-framework.', 
                     deadline: '2022-06-29', 
                     priority: 'Mid', 
                     completed: false 
-                }
-            ]
-        })
+                }]
+            },
+
+            editTodo (todo) {
+                this.editedIndex = this.todos.indexOf(todo)
+                this.editedTodo= Object.assign({}, todo)
+                this.dialog = true
+            },
+
+            deleteItem (todo) {
+                this.editedIndex = this.desserts.indexOf(todo)
+                this.editedItem = Object.assign({}, todo)
+                this.dialogDelete = true
+            },
+
+            deleteItemConfirm () {
+                this.todos.splice(this.editedIndex, 1)
+                this.closeDelete()
+            },
+
+            close () {
+                this.dialog = false
+                this.$nextTick(() => {
+                this.editedTodo = Object.assign({}, this.defaultTodo)
+                this.editedIndex = -1})
+                },
+
+            save () {
+                if (this.editedIndex > -1) {
+                    Object.assign(this.desserts[this.editedIndex], this.editedItem)
+                    } else {
+                    this.desserts.push(this.editedItem)
+                    }
+                    this.close()
+                },    
+        }
 }
 </script>
 
