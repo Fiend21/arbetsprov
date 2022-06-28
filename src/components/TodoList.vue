@@ -39,14 +39,14 @@
         <template v-slot:item.completed="{ item }">
             <v-simple-checkbox v-model="item.completed" disabled></v-simple-checkbox>
         </template>
-        <template v-slot:expanded-item="{ headers, item }">
+        <template v-slot:expanded-todo="{ headers, item }">
             <td :colspan="headers.length">
                 Details about {{ item.name }}
             </td>
         </template>
         <template v-slot:item.actions="{ item }">
-            <v-icon small class="mr-2" @click="editItem(item)">mdi-file-edit</v-icon>
-            <v-icon small @click="deleteItem(item)">mdi-delete</v-icon>
+            <v-icon small class="mr-2" @click="editTodo(item)">mdi-file-edit</v-icon>
+            <v-icon small @click="deleteTodo(item)">mdi-delete</v-icon>
         </template>
     </v-data-table>
 </template>
@@ -101,7 +101,7 @@ export default {
             todos: [],
             editedIndex: -1,
 
-            editedTodo: {
+            editedItem: {
                     created: '', 
                     description: '', 
                     deadline: '', 
@@ -109,7 +109,7 @@ export default {
                     completed: false 
             },
 
-            defaultTodo: {
+            defaultItem: {
                     created: '', 
                     description: '', 
                     deadline: '', 
@@ -120,7 +120,7 @@ export default {
 
     computed: {
       formTitle () {
-        return this.id === -1 ? 'New Todo' : 'Edit Todo'
+        return this.editedIndex === -1 ? 'New Todo' : 'Edit Todo'
       },
     },
 
@@ -181,7 +181,7 @@ export default {
 
             deleteItem (todo) {
                 this.editedIndex = this.desserts.indexOf(todo)
-                this.editedItem = Object.assign({}, todo)
+                this.editedTodo = Object.assign({}, todo)
                 this.dialogDelete = true
             },
 
@@ -199,9 +199,9 @@ export default {
 
             save () {
                 if (this.editedIndex > -1) {
-                    Object.assign(this.todos[this.editedIndex], this.editedItem)
+                    Object.assign(this.todos[this.editedIndex], this.editedTodo)
                     } else {
-                    this.todos.push(this.editedItem)
+                    this.todos.push(this.editedTodo)
                     }
                     this.close()
                 },    
