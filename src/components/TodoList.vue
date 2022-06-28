@@ -9,6 +9,12 @@
                     append-icon="mdi-magnify"
                 ></v-text-field>
                 <v-spacer></v-spacer>
+                <v-switch
+                    v-model="singleExpand"
+                    label="Hide Completed"
+                    class="mt-2"
+                ></v-switch>
+                <v-spacer></v-spacer>
                 <template>
                     <v-btn
                         color="primary"
