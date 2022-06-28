@@ -3,13 +3,12 @@
     <v-navigation-drawer
       v-model="drawer"
       app
-    >
-  </v-navigation-drawer>
+    ></v-navigation-drawer>
 
-    <v-app-bar app>
+  <v-app-bar app>
      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-     <v-toolbar-title>TodoList v.1.0</v-toolbar-title>
-    </v-app-bar>
+     <v-toolbar-title>TodoList</v-toolbar-title>
+  </v-app-bar>
 
     <v-main>
       <TodoList/>
