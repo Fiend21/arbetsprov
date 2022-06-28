@@ -51,8 +51,7 @@ export default {
     data: () => ({
          
             headers: [
-                {
-                    text: 'Description',
+                { text: 'Description',
                     sortable: true,
                     value: 'description',
                     align: 'Start',
