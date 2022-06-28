@@ -8,7 +8,16 @@
                     placeholder="Find TODOS..."
                     append-icon="mdi-magnify"
                     ></v-text-field>
-                <v-spacer></v-spacer>
+                <v-spacer></v-spacer>'
+                <template v-slot:activator="{ on, attrs }">
+                    <v-btn
+                        color="primary"
+                        dark
+                        class="mb-2"
+                        v-bind="attrs"
+                        v-on="on"
+                    >New Todo</v-btn>
+                </template>
             </v-toolbar>
         </template>
 
@@ -41,6 +50,11 @@ export default {
                 {
                     text: 'Deadline',
                     value: 'deadline',
+                },
+
+                {
+                    text: 'Priority',
+                    value: 'priority',
                 },
 
 
