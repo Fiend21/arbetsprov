@@ -3,6 +3,7 @@
         <template v-slot:top>
             <v-toolbar flat>
                 <v-text-field id="search" v-model="search" placeholder="Find TODOS..."></v-text-field>
+                <v-spacer></v-spacer>
                 <v-btn>Apply</v-btn>
             </v-toolbar>
         </template>
