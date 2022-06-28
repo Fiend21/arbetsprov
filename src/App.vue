@@ -66,9 +66,9 @@ export default {
   methods: {
     initialize () {
       this.subsets = [
-        {title: 'Current', icon: 'mdi-timer-sand-empty'},
-        {title: 'Previous', icon: 'mdi-check'},
-        {title: 'All', icon: 'mdi-all-inclusive'},    
+        {id: 0, title: 'Current', icon: 'mdi-timer-sand-empty'},
+        {id: 1,title: 'Previous', icon: 'mdi-check'},
+        {id: 2, title: 'All', icon: 'mdi-all-inclusive'},    
       ]
     }
   }

@@ -39,11 +39,11 @@
         </template>
 
         <template v-slot:item.completed="{ item }">
-            <v-checkbox v-model="item.completed">Set 'Completed'</v-checkbox> 
+            <v-simple-checkbox v-model="item.completed"></v-simple-checkbox> 
         </template>
         <template v-slot:item.actions="{ item }">
-            <v-icon small class="mr-2" @click="editTodo(item)">mdi-file-edit</v-icon>
-            <v-icon small @click="deleteTodo(item)">mdi-delete</v-icon>
+            <v-icon class="mr-2" @click="editItem(item)">mdi-file-edit</v-icon>
+            <v-icon @click="deleteTodo(item)">mdi-delete</v-icon>
         </template>
     </v-data-table>
 </template>
@@ -168,15 +168,15 @@ export default {
                 }]
             },
 
-            editTodo (todo) {
-                this.editedIndex = this.todos.indexOf(todo)
-                this.editedTodo= Object.assign({}, todo)
+            editItem (item) {
+                this.editedIndex = this.todos.indexOf(item)
+                this.editedItem = Object.assign({}, item)
                 this.dialog = true
             },
 
-            deleteItem (todo) {
-                this.editedIndex = this.desserts.indexOf(todo)
-                this.editedTodo = Object.assign({}, todo)
+            deleteItem (item) {
+                this.editedIndex = this.desserts.indexOf(item)
+                this.editedItem = Object.assign({}, item)
                 this.dialogDelete = true
             },
 
@@ -188,15 +188,15 @@ export default {
             close () {
                 this.dialog = false
                 this.$nextTick(() => {
-                this.editedTodo = Object.assign({}, this.defaultTodo)
+                this.editedItem = Object.assign({}, this.defaultItem)
                 this.editedIndex = -1})
                 },
 
             save () {
                 if (this.editedIndex > -1) {
-                    Object.assign(this.todos[this.editedIndex], this.editedTodo)
+                    Object.assign(this.todos[this.editedIndex], this.editedItem)
                     } else {
-                    this.todos.push(this.editedTodo)
+                    this.todos.push(this.editedItem)
                     }
                     this.close()
                 },    
