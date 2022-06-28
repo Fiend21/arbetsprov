@@ -22,7 +22,7 @@
 
                 <v-dialog 
                     v-model="dialog"
-                    max-width="500px">
+                    max-width="37em">
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn
                             color="Black"
@@ -83,6 +83,7 @@
                         <v-card-title class="text-h5">
                             <p>Are you sure you want to delete this Todo?</p>
                         </v-card-title>
+                        <v-card-subtitle class="text-h7">- it cannot be undone</v-card-subtitle>
                         <v-card-actions>
                         <v-spacer></v-spacer>
                             <v-btn 
@@ -227,7 +228,37 @@ export default {
                     deadline: '2022-06-29', 
                     priority: 'Mid', 
                     completed: false 
-                }
+                },
+
+                {  
+                    description: 'Get Aquainted with TypeScript.', 
+                    deadline: '2022-06-29', 
+                    priority: 'Mid', 
+                    completed: false 
+                },
+
+                {  
+                    description: 'Refresh Java Skillset.', 
+                    deadline: '2022-07-13', 
+                    priority: 'low', 
+                    completed: false 
+                },
+                
+                {  
+                    description: 'Get familiar with general Web-API-use', 
+                    deadline: '2022-06-29', 
+                    priority: 'Mid', 
+                    completed: false 
+                },
+
+                {
+                    description: 'Practice JavaScript Basics', 
+                    deadline: '2022-07-04', 
+                    priority: 'High', 
+                    completed: false 
+                },
+
+
             ]
             },
 
