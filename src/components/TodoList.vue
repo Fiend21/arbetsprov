@@ -147,7 +147,7 @@ export default {
                     deadline: '2022-06-29', 
                     priority: 'Mid', 
                     completed: false 
-                   }
+                }
             ]
         })
 }
