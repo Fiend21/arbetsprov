@@ -28,8 +28,8 @@ let id = 0
 export default {
     name: 'TodoList',
 
-    data() {
-        return {
+    data: () => ({
+         
             headers: [
                 {
                     text: 'Description',
@@ -69,8 +69,7 @@ export default {
                 { id: id++, created: '2022-06-27', description: 'Refactor .Net-app to use dedicated validation-class.', deadline: '2022-08-07', completed: false },
                 { id: id++, created: '2022-06-28', description: 'Learn Play-framework.', deadline: '2022-06-29', completed: false }
             ]
-        }
-    }
+        })
 }
 </script>
 
