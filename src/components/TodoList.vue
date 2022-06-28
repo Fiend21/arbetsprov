@@ -64,10 +64,10 @@ export default {
                 }
             ],
             todos: [
-                { id: id++, created: '2022-06-23', description: 'Learn Vue.', deadline: '2022-06-29', completed: false },
-                { id: id++, created: '2022-06-27', description: 'Learn Vuetify.', deadline: '2022-06-29', completed: false },
-                { id: id++, created: '2022-06-27', description: 'Refactor .Net-app to use dedicated validation-class.', deadline: '2022-08-07', completed: false },
-                { id: id++, created: '2022-06-28', description: 'Learn Play-framework.', deadline: '2022-06-29', completed: false }
+                { id: id++, created: '2022-06-23', description: 'Learn Vue.', deadline: '2022-06-29', priority: 'High', completed: false },
+                { id: id++, created: '2022-06-27', description: 'Learn Vuetify.', deadline: '2022-06-29', priority: 'High', completed: false },
+                { id: id++, created: '2022-06-27', description: 'Refactor .Net-app to use dedicated validation-class.', deadline: '2022-08-07', priority: 'Low', completed: false },
+                { id: id++, created: '2022-06-28', description: 'Learn Play-framework.', deadline: '2022-06-29', priority: 'Mid', completed: false }
             ]
         })
 }
