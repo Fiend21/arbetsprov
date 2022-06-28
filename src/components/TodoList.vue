@@ -135,7 +135,6 @@ export default {
             editedIndex: -1,
 
             editedItem: {
-                    created: '', 
                     description: '', 
                     deadline: '', 
                     priority: '', 
@@ -143,7 +142,6 @@ export default {
             },
 
             defaultItem: {
-                    created: '', 
                     description: '', 
                     deadline: '', 
                     priority: '', 
@@ -192,12 +190,6 @@ export default {
                 },
 
                 {
-                    text: 'Created',
-                    sortable: true,
-                    value: 'created',
-                },
-
-                {
                     text: 'Completed',
                     sortable: false,
                     value: 'completed',
@@ -210,7 +202,6 @@ export default {
             ],
 
                 this.todos = [ {  
-                    created: '2022-06-23',
                     description: 'Learn Vue.', 
                     deadline: '2022-06-29',
                     priority: 'High', 
@@ -218,7 +209,6 @@ export default {
                 },
 
                 {    
-                    created: '2022-06-27', 
                     description: 'Learn Vuetify.', 
                     deadline: '2022-06-29', 
                     priority: 'High', 
@@ -226,7 +216,6 @@ export default {
                 },
 
                 {  
-                    created: '2022-06-27', 
                     description: 'Refactor .Net-app to use dedicated validation-class.', 
                     deadline: '2022-08-07', 
                     priority: 'Low', 
@@ -234,7 +223,6 @@ export default {
                 },
 
                 {  
-                    created: '2022-06-28', 
                     description: 'Learn Play-framework.', 
                     deadline: '2022-06-29', 
                     priority: 'Mid', 
