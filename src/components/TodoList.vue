@@ -2,8 +2,8 @@
     <v-data-table :headers="headers" :items="todos" :item-key="id" :items-per-page="15" class="-1" :search="search">
         <template v-slot:top>
             <v-toolbar flat>
-            <v-text-field id="search" v-model="search" placeholder="Find TODOS..."></v-text-field>
-            <v-btn>Apply</v-btn>
+                <v-text-field id="search" v-model="search" placeholder="Find TODOS..."></v-text-field>
+                <v-btn>Apply</v-btn>
             </v-toolbar>
         </template>
 
