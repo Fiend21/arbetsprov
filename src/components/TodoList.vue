@@ -13,6 +13,8 @@
                     v-model="search" 
                     placeholder="Find TODOS..."
                     append-icon="mdi-magnify"
+                    single-line
+                    hide-details
                 ></v-text-field>
                 <v-spacer></v-spacer>
                 <v-dialog 
@@ -37,12 +39,7 @@
         </template>
 
         <template v-slot:item.completed="{ item }">
-            <v-simple-checkbox v-model="item.completed" disabled></v-simple-checkbox>
-        </template>
-        <template v-slot:expanded-todo="{ headers, item }">
-            <td :colspan="headers.length">
-                Details about {{ item.name }}
-            </td>
+            <v-checkbox v-model="item.completed">Set 'Completed'</v-checkbox> 
         </template>
         <template v-slot:item.actions="{ item }">
             <v-icon small class="mr-2" @click="editTodo(item)">mdi-file-edit</v-icon>
@@ -69,15 +66,14 @@ export default {
                 },
 
                 {
-                    text: 'Deadline',
-                    value: 'deadline',
-                },
-
-                {
                     text: 'Priority',
                     value: 'priority',
                 },
 
+                {
+                    text: 'Deadline',
+                    value: 'deadline',
+                },
 
                 {
                     text: 'Created',
@@ -144,8 +140,7 @@ export default {
                     description: 'Learn Vue.', 
                     deadline: '2022-06-29',
                     priority: 'High', 
-                    completed: 
-                    false 
+                    completed: false 
                 },
 
                 {    

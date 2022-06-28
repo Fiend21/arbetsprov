@@ -37,7 +37,7 @@
   </v-app-bar>
 
     <v-main>
-      <TodoList/>
+      <TodoList ref="markdown"/>
     </v-main>
   </v-app>
 </template>
@@ -55,11 +55,22 @@ export default {
   data: () => ({
     drawer: null,
 
-    subsets: [
-      {title: 'Current', icon: 'mdi-timer-sand-empty', todos: [{}]},
-      {title: 'Previous', icon: 'mdi-check', todos: [{}]},
-      {title: 'All', icon: 'mdi-all-inclusive', todos: [{}]},    
-      ],
+    subsets: [],
+
   }),
+
+  created() {
+            this.initialize()
+      },
+
+  methods: {
+    initialize () {
+      this.subsets = [
+        {title: 'Current', icon: 'mdi-timer-sand-empty'},
+        {title: 'Previous', icon: 'mdi-check'},
+        {title: 'All', icon: 'mdi-all-inclusive'},    
+      ]
+    }
+  }
 };
 </script>
