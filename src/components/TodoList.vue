@@ -75,6 +75,6 @@ export default {
 
 <style>
 #search {
-    padding-left: 2.1em;
+    padding-left: 0.3em;
 }
 </style>
