@@ -1,5 +1,12 @@
 <template>
-    <v-data-table :headers="headers" :items="todos" :item-key="id" :items-per-page="15" class="-1" :search="search">
+    <v-data-table 
+        :headers="headers" 
+        :items="todos" 
+        :item-key="id" 
+        :items-per-page="15"        
+        :search="search"
+        class="-1" 
+    >
         <template v-slot:top>
             <v-toolbar flat>
                 <v-text-field 
