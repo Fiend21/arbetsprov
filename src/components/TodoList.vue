@@ -5,6 +5,7 @@
         :item-key="id" 
         :items-per-page="15"        
         :search="search"
+
     >
         <template v-slot:top>
             <v-toolbar flat>
@@ -16,7 +17,9 @@
                     single-line
                     hide-details
                 ></v-text-field>
+
                 <v-spacer></v-spacer>
+
                 <v-dialog 
                     v-model="dialog"
                     max-width="500px">
@@ -45,7 +48,7 @@
                                      <v-col>
                                         <v-text-field
                                             v-model="editedItem.deadline"
-                                            label="Deadline"
+                                            label="YYYY-MM-DD"
                                         ></v-text-field>
                                     </v-col>
                                      <v-col>
@@ -56,9 +59,46 @@
                                     </v-col>
                                 </v-row>
                              </v-container>
-                         </v-card-text>
+                        </v-card-text>
+
+                        <v-card-actions>
+                            <v-spacer></v-spacer>
+                                <v-btn
+                                    color="Black"
+                                    text
+                                    @click="close"
+                                    >Cancel
+                                </v-btn>
+                                <v-btn
+                                    color="Black"
+                                    text
+                                    @click="save"
+                                    >Save
+                                </v-btn>
+                         </v-card-actions>
                      </v-card>
-                </v-dialog>              
+                </v-dialog>  
+                <v-dialog v-model="dialogDelete" max-width="37em">
+                    <v-card>
+                        <v-card-title class="text-h5">
+                            <p>Are you sure you want to delete this Todo?</p>
+                        </v-card-title>
+                        <v-card-actions>
+                        <v-spacer></v-spacer>
+                            <v-btn 
+                                color="Black" 
+                                text @click="closeDelete"
+                                >Cancel
+                                </v-btn>
+                             <v-btn 
+                                color="Black" 
+                                text @click="deleteItemConfirm"
+                                >OK
+                                </v-btn>
+                        <v-spacer></v-spacer>
+                        </v-card-actions>
+                     </v-card>
+                 </v-dialog>            
             </v-toolbar>
         </template>
 
@@ -66,8 +106,16 @@
             <v-simple-checkbox v-model="item.completed"></v-simple-checkbox> 
         </template>
         <template v-slot:item.actions="{ item }">
-            <v-icon class="mr-2" @click="editItem(item)">mdi-file-edit</v-icon>
-            <v-icon @click="deleteTodo(item)">mdi-delete</v-icon>
+            <v-icon class="mr-2"
+                @click="editItem(item)"
+                >
+                    mdi-file-edit
+                </v-icon>
+                <v-icon 
+                    @click="deleteItem(item)"
+                    >
+                    mdi-delete
+                </v-icon>
         </template>
     </v-data-table>
 </template>
@@ -78,46 +126,11 @@ export default {
     name: 'TodoList',
 
     data: () => ({
-
+            search: '',
             dialog: false,
             dialogDelete: false,
 
-            headers: [
-                { text: 'Description',
-                    sortable: true,
-                    value: 'description',
-                    align: 'Start',
-                },
-
-                {
-                    text: 'Priority',
-                    value: 'priority',
-                },
-
-                {
-                    text: 'Deadline',
-                    value: 'deadline',
-                },
-
-                {
-                    text: 'Created',
-                    sortable: true,
-                    value: 'created',
-                },
-
-
-
-                {
-                    text: 'Completed',
-                    sortable: false,
-                    value: 'completed',
-                },
-
-                {
-                    sortable: false,
-                    value: 'actions',
-                }
-            ],
+            headers: [],
             todos: [],
             editedIndex: -1,
 
@@ -157,8 +170,45 @@ export default {
             this.initialize()
         },
 
-         methods: {
+        methods: {
             initialize() {
+                this.headers =  [{   
+                    text: 'Description',
+                    sortable: true,
+                    value: 'description',
+                    align: 'Start',
+                },
+
+                {
+                    text: 'Priority',
+                    sortable: false,
+                    value: 'priority',
+                },
+
+                {
+                    text: 'Deadline',
+                    sortable: false,
+                    value: 'deadline',
+                },
+
+                {
+                    text: 'Created',
+                    sortable: true,
+                    value: 'created',
+                },
+
+                {
+                    text: 'Completed',
+                    sortable: false,
+                    value: 'completed',
+                },
+
+                {
+                    sortable: false,
+                    value: 'actions',
+                }
+            ],
+
                 this.todos = [ {  
                     created: '2022-06-23',
                     description: 'Learn Vue.', 
@@ -189,8 +239,11 @@ export default {
                     deadline: '2022-06-29', 
                     priority: 'Mid', 
                     completed: false 
-                }]
+                }
+            ]
             },
+
+
 
             editItem (item) {
                 this.editedIndex = this.todos.indexOf(item)
@@ -199,7 +252,7 @@ export default {
             },
 
             deleteItem (item) {
-                this.editedIndex = this.desserts.indexOf(item)
+                this.editedIndex = this.todos.indexOf(item)
                 this.editedItem = Object.assign({}, item)
                 this.dialogDelete = true
             },
@@ -216,6 +269,14 @@ export default {
                 this.editedIndex = -1})
                 },
 
+            closeDelete () {
+                this.dialogDelete = false
+                this.$nextTick(() => {
+                this.editedItem = Object.assign({}, this.defaultItem)
+                this.editedIndex = -1
+            })
+      },    
+
             save () {
                 if (this.editedIndex > -1) {
                     Object.assign(this.todos[this.editedIndex], this.editedItem)
@@ -231,5 +292,9 @@ export default {
 <style>
 #search {
     padding-left: 0.3em;
+}
+
+.h5 {
+    justify-content: center;
 }
 </style>
