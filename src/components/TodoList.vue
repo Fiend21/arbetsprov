@@ -5,7 +5,6 @@
         :item-key="id" 
         :items-per-page="15"        
         :search="search"
-        class="-1" 
     >
         <template v-slot:top>
             <v-toolbar flat>

@@ -1,14 +1,13 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="Arbetsprov">
     <v-navigation-drawer
       v-model="drawer"
       app
     >
-      <!--  -->
-    </v-navigation-drawer>
+  </v-navigation-drawer>
 
     <v-app-bar app>
-      <v-toolbar-title>TodoList v.1.0</v-toolbar-title>
+     <v-toolbar-title>TodoList v.1.0</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
@@ -28,7 +27,7 @@ export default {
 },
 
   data: () => ({
-    drawer: null, 
+    
   }),
 };
 </script>
