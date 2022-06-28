@@ -7,9 +7,9 @@
                     v-model="search" 
                     placeholder="Find TODOS..."
                     append-icon="mdi-magnify"
-                    ></v-text-field>
-                <v-spacer></v-spacer>'
-                <template v-slot:activator="{ on, attrs }">
+                ></v-text-field>
+                <v-spacer></v-spacer>
+                <template>
                     <v-btn
                         color="primary"
                         dark
