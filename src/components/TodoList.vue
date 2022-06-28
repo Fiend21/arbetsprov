@@ -30,6 +30,11 @@
         <template v-slot:item.completed="{ item }">
             <v-simple-checkbox v-model="item.completed" disabled></v-simple-checkbox>
         </template>
+        <template v-slot:expanded-item="{ headers, item }">
+            <td :colspan="headers.length">
+                Details about {{ item.name }}
+            </td>
+        </template>
         <template v-slot:item.actions="{ item }">
             <v-icon small class="mr-2" @click="editItem(item)">mdi-pencil</v-icon>
             <v-icon small @click="deleteItem(item)">mdi-delete</v-icon>
