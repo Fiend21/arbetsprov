@@ -7,7 +7,7 @@
     <v-list-item>
       <v-list-item-content>
         <v-list-item-title>Display Options</v-list-item-title>
-        <v-list-item-subtitle>- Select a Subset</v-list-item-subtitle>
+        <v-list-item-subtitle>Select a Subset</v-list-item-subtitle>
       </v-list-item-content>  
     </v-list-item>
   <v-divider></v-divider>
@@ -16,10 +16,10 @@
       dense
       nav
     ></v-list>
-
          <v-list-item
           v-for="subset in subsets"
           :key="subset.title"
+          @click="selectedSubset = subset"
         >
           <v-list-item-icon>
             <v-icon>{{ subset.icon }}</v-icon>
@@ -56,7 +56,7 @@ export default {
     drawer: null,
 
     subsets: [],
-
+    selectedSubset: null,
   }),
 
   created() {
@@ -66,9 +66,9 @@ export default {
   methods: {
     initialize () {
       this.subsets = [
-        {id: 0, title: 'Current', icon: 'mdi-timer-sand-empty'},
-        {id: 1,title: 'Previous', icon: 'mdi-check'},
-        {id: 2, title: 'All', icon: 'mdi-all-inclusive'},    
+        {title: 'Current', icon: 'mdi-timer-sand-empty'},
+        {title: 'Previous', icon: 'mdi-check'},
+        {title: 'All', icon: 'mdi-all-inclusive'},    
       ]
     }
   }
