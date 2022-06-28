@@ -12,14 +12,18 @@
     </v-list-item>
   <v-divider></v-divider>
      
-     <v-list
-       nav
-       ></v-list>
+    <v-list
+      dense
+      nav
+    ></v-list>
 
          <v-list-item
           v-for="subset in subsets"
           :key="subset.title"
         >
+          <v-list-item-icon>
+            <v-icon>{{ subset.icon }}</v-icon>
+          </v-list-item-icon>
 
           <v-list-item-content>
             <v-list-item-title>{{ subset.title }}</v-list-item-title>
@@ -52,9 +56,9 @@ export default {
     drawer: null,
 
     subsets: [
-      {title: 'Current'},
-      {title: 'Previous'},
-      {title: 'All'},    
+      {title: 'Current', icon: 'mdi-timer-sand-empty', todos: [{}]},
+      {title: 'Previous', icon: 'mdi-check', todos: [{}]},
+      {title: 'All', icon: 'mdi-all-inclusive', todos: [{}]},    
       ],
   }),
 };
