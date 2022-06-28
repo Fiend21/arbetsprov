@@ -15,7 +15,7 @@
                     append-icon="mdi-magnify"
                 ></v-text-field>
                 <v-spacer></v-spacer>
-                <template>
+                <template v-slot:activator="{ on, attrs }">
                     <v-btn
                         color="primary"
                         dark
