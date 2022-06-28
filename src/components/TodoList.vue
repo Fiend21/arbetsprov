@@ -33,6 +33,30 @@
                         <v-card-title>
                             <span class="text-h5">{{ formTitle }}</span>
                         </v-card-title>
+                         <v-card-text>
+                             <v-container>
+                                <v-row>
+                                    <v-col>
+                                        <v-text-field
+                                            v-model="editedItem.description"
+                                            label="Description"
+                                        ></v-text-field>
+                                    </v-col>
+                                     <v-col>
+                                        <v-text-field
+                                            v-model="editedItem.deadline"
+                                            label="Deadline"
+                                        ></v-text-field>
+                                    </v-col>
+                                     <v-col>
+                                        <v-text-field
+                                            v-model="editedItem.priority"
+                                            label="Priority"
+                                        ></v-text-field>
+                                    </v-col>
+                                </v-row>
+                             </v-container>
+                         </v-card-text>
                      </v-card>
                 </v-dialog>              
             </v-toolbar>
