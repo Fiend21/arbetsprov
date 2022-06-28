@@ -32,18 +32,21 @@ export default {
                 },
 
                 {
+                    text: 'Deadline',
+                    value: 'deadline',
+                },
+
+
+                {
                     text: 'Created',
                     sortable: true,
                     value: 'created',
                 },
 
-                {
-                    text: 'Deadline',
-                    value: 'deadline',
-                },
 
                 {
                     text: 'Completed',
+                    sortable: false,
                     value: 'completed',
                 },
 
