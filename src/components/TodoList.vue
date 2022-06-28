@@ -17,7 +17,7 @@
                 ></v-text-field>
                 <v-spacer></v-spacer>
                 <v-switch
-                    v-model="hideCompleted"
+                    v-model="singleExpand"
                     label="Hide Completed"
                     class="mt-2"
                 ></v-switch>
